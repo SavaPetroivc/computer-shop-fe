@@ -1,1 +1,21 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+<div class="home" *ngIf="mostPopular$ | async">
+  <div class="home--header">
+    <div class="home--header--text">
+      <h1>Welcome to ComputerShop</h1>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry.
+      </p>
+    </div>
+  </div>
+  <div class="home--products-wrapper">
+    <h1>Look at out most popular products</h1>
+    <div class="home--products-wrapper--products">
+      <app-product
+        *ngFor="let product of mostPopular$ | async"
+        [product]="product"
+      ></app-product>
+    </div>
+  </div>
+</div>

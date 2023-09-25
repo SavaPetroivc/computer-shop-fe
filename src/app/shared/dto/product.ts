@@ -8,3 +8,5 @@ export type Product = {
 export type ProductCatalog = Omit<Product, "quantity" | "id">;
 
 export type ProductAlter = Omit<Product, "id">;
+
+export type MostPopular = Pick<Product, "name"|"price">

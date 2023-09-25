@@ -7,5 +7,5 @@ import { ProductCatalog } from "src/app/shared/dto/product";
   styleUrls: ["./product.component.scss"],
 })
 export class ProductComponent {
-  @Input() product!: ProductCatalog;
+  @Input({ required: true }) product!: ProductCatalog;
 }
