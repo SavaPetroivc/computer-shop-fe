@@ -1,0 +1,13 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <div style="display: grid; gap: 2em">
+      <app-navigate-link route="products" text="Products"></app-navigate-link>
+      <app-navigate-link route="orders" text="Orders"></app-navigate-link>
+      <app-navigate-link route="my-orders" text="My Orders"></app-navigate-link>
+      <app-navigate-link route="users" text="Users"></app-navigate-link>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

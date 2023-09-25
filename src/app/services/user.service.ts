@@ -11,6 +11,7 @@ export class UserService {
   auth(user: { username: string; password: string }) {
     return this.http.post(`${BASE_URL}/users/auth`, user, {
       responseType: "text",
+      withCredentials: true,
     });
   }
 
@@ -27,5 +28,9 @@ export class UserService {
     return this.http.post(`${BASE_URL}/users`, user, {
       responseType: "text",
     });
+  }
+
+  getUserInfo() {
+    return this.http.get(`${BASE_URL}/users/me`);
   }
 }
