@@ -1,0 +1,40 @@
+<div class="signup-wrapper">
+  <div [formGroup]="signupForm" class="signup-form">
+    <mat-form-field class="basic-input">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Petar Petrovic"
+        value=""
+        formControlName="username"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>First Name</mat-label>
+      <input matInput value="" formControlName="firstName" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Last Name</mat-label>
+      <input matInput value="" formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Email</mat-label>
+      <input matInput value="" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Contact Phone</mat-label>
+      <input matInput value="" formControlName="contactPhone" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" value="" formControlName="password" />
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="onBtnClick()">Signup</button>
+  </div>
+</div>
