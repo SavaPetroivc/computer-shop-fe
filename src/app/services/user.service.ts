@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BASE_URL } from "../shared/consts";
+import { Observable } from "rxjs";
+import { UserInfo } from "../modules/dashboard/models/user-info.model";
 
 @Injectable({
   providedIn: "root",
@@ -8,11 +10,8 @@ import { BASE_URL } from "../shared/consts";
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  auth(user: { username: string; password: string }) {
-    return this.http.post(`${BASE_URL}/users/auth`, user, {
-      responseType: "text",
-      withCredentials: true,
-    });
+  auth(user: { username: string; password: string }): Observable<UserInfo> {
+    return this.http.post<UserInfo>(`${BASE_URL}/users/auth`, user);
   }
 
   signup(user: {
@@ -30,7 +29,7 @@ export class UserService {
     });
   }
 
-  getUserInfo() {
-    return this.http.get(`${BASE_URL}/users/me`);
+  getUserInfo(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(`${BASE_URL}/users/me`);
   }
 }

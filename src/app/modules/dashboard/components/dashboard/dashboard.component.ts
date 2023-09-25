@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ProductsService } from "src/app/services/products.service";
 import { ProductCatalog } from "src/app/shared/dto/product";
-import { UserService } from "../../../../services/user.service";
+import { CurrentUserService } from "../../../../services/current-user.service";
+import { Observable } from "rxjs";
+import { UserInfo } from "../../models/user-info.model";
 
 @Component({
   selector: "app-dashboard",
@@ -10,18 +12,15 @@ import { UserService } from "../../../../services/user.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent {
+  currentUser$: Observable<UserInfo | null> =
+    this.currentUserService.getCurrentUser$();
   products: ProductCatalog[] = [];
   constructor(
-    private productsService: ProductsService,
-    private userService: UserService,
+    private currentUserService: CurrentUserService,
+    private router: Router,
   ) {}
 
-  ngOnInit() {
-    this.productsService.getProducts().subscribe((response) => {
-      this.products = response;
-    });
-    this.userService.getUserInfo().subscribe((res) => {
-      console.log(res);
-    });
-  }
+  ngOnInit() {}
+
+  logout() {}
 }

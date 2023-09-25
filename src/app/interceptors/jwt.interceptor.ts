@@ -19,7 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
     request = request.clone({ withCredentials: true });
     return next.handle(request).pipe(
       catchError((error) => {
-        if (error.status === 401) {
+        if (error.status === 401 && !request.url.includes("/users/me")) {
           this.router.navigate(["/login"]);
         }
         return throwError(() => error);

@@ -1,6 +1,11 @@
 <div class="navbar">
   <a routerLink="/"><p>Home</p></a>
   <a><p>Products</p></a>
-  <a routerLink="/login"><p>Login</p></a>
+  <ng-container *ngIf="authenticated$ | async; else nonAuth">
+    <a routerLink="/dashboard"><p>Profile</p></a>
+  </ng-container>
+  <ng-template #nonAuth>
+    <a routerLink="/login"><p>Login</p></a>
+  </ng-template>
   <a routerLink="/signup"><p>Sign Up</p></a>
 </div>

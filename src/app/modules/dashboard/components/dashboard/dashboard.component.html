@@ -1,13 +1,43 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
-    <div style="display: grid; gap: 2em">
-      <app-navigate-link route="products" text="Products"></app-navigate-link>
-      <app-navigate-link route="orders" text="Orders"></app-navigate-link>
-      <app-navigate-link route="my-orders" text="My Orders"></app-navigate-link>
-      <app-navigate-link route="users" text="Users"></app-navigate-link>
+  <mat-sidenav mode="side" opened *ngIf="currentUser$ | async as currentUser">
+    <div style="display: flex; flex-direction: column; height: 100%; gap: 2em">
+      <app-navigate-link
+        *ngIf="
+          currentUser.role === 'ADMINISTRATOR' ||
+          currentUser.role === 'WAREHOUSE_ADMINISTRATOR'
+        "
+        route="/dashboard/products"
+        text="Products"
+      ></app-navigate-link>
+      <app-navigate-link
+        route="orders"
+        text="Orders"
+        *ngIf="
+          currentUser.role === 'ADMINISTRATOR' ||
+          currentUser.role === 'WAREHOUSE_ADMINISTRATOR'
+        "
+      ></app-navigate-link>
+      <app-navigate-link
+        route="my-orders"
+        text="My Orders"
+        *ngIf="currentUser.role === 'USER'"
+      ></app-navigate-link>
+      <app-navigate-link
+        route="users"
+        text="Users"
+        *ngIf="currentUser.role === 'ADMINISTRATOR'"
+      ></app-navigate-link>
+      <app-navigate-link
+        style="margin-top: auto"
+        route="/login"
+        (click)="logout()"
+        text="Logout"
+      ></app-navigate-link>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+   <div style="padding: 2em">
+     <router-outlet></router-outlet>
+   </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
