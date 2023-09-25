@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ProductsService } from "src/app/services/products.service";
 import { ProductCatalog } from "src/app/shared/dto/product";
 import { CurrentUserService } from "../../../../services/current-user.service";
 import { Observable } from "rxjs";
