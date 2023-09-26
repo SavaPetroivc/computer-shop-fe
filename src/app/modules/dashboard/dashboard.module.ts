@@ -7,11 +7,33 @@ import { ProductsOverviewComponent } from "./components/products-overview/produc
 import { getUserInfoInitializer } from "./initializer/get-user-info.initializer";
 import { UserService } from "../../services/user.service";
 import { CurrentUserService } from "../../services/current-user.service";
+import { ProductsOverviewTableComponent } from "./components/products-overview/products-overview-table/products-overview-table.component";
+import { MatTableModule } from "@angular/material/table";
+import { MatButtonModule } from "@angular/material/button";
+import { ProductCreateFormComponent } from "./components/products-overview/product-create-form/product-create-form.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [NavigateLinkComponent, ProductsOverviewComponent],
+  declarations: [
+    NavigateLinkComponent,
+    ProductsOverviewComponent,
+    ProductsOverviewTableComponent,
+    ProductCreateFormComponent,
+  ],
   exports: [NavigateLinkComponent],
-  imports: [CommonModule, DashboardRoutingModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    MatTableModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,

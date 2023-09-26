@@ -1,0 +1,20 @@
+<div class="product-form" [formGroup]="productForm">
+  <mat-form-field class="basic-input">
+    <mat-label>Product name</mat-label>
+    <input matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Product price</mat-label>
+    <input matInput placeholder="Name" formControlName="price" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Product quantity</mat-label>
+    <input
+      matInput
+      placeholder="Name"
+      type="number"
+      formControlName="quantity"
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary">Save</button>
+</div>

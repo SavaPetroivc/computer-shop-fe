@@ -19,6 +19,10 @@ export class ProductsService {
     return this.http.get<ProductCatalog[]>(`${BASE_URL}/products`);
   }
 
+  getProductsAdmin(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${BASE_URL}/products/administrators`);
+  }
+
   insertProduct(product: ProductAlter) {
     return this.http.post(`${BASE_URL}/products`, product, {
       responseType: "text",

@@ -1,1 +1,11 @@
-<p>products-overview works!</p>
+<div class="product-header">
+  <div>
+    <h1>Product Overview</h1>
+  </div>
+  <div>
+    <button mat-stroked-button color="primary" (click)="openCreateForm()">
+      Add
+    </button>
+  </div>
+</div>
+<app-products-overview-table></app-products-overview-table>
