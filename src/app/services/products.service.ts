@@ -27,10 +27,8 @@ export class ProductsService {
     return this.http.post<Product>(`${BASE_URL}/products`, product);
   }
 
-  changeProduct(product: Product) {
-    return this.http.put(`${BASE_URL}/products`, product, {
-      responseType: "text",
-    });
+  changeProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${BASE_URL}/products`, product);
   }
 
   getAdminProducts(): Observable<Product[]> {

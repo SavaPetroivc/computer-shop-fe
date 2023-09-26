@@ -15,3 +15,22 @@ export const createProductSuccess = createAction(
   "[Products] Create Product Success",
   props<{ payload: Product }>(),
 );
+
+export const updateProduct = createAction(
+  "[Products] Update",
+  props<{ payload: Product }>(),
+);
+export const updateProductSuccess = createAction(
+  "[Products] Update Success",
+  props<{ payload: Product }>(),
+);
+
+export const deleteProduct = createAction(
+  "[Products] Delete Product",
+  props<{ payload: string }>(),
+);
+
+export const deleteProductSuccess = createAction(
+  "[Products] Delete Product Success",
+  props<{ payload: string }>(),
+);

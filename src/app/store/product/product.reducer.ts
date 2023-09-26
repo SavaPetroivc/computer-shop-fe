@@ -1,10 +1,10 @@
 import { ActionReducer, createReducer, on } from "@ngrx/store";
 import { Product } from "../../shared/dto/product";
 import {
-  createProduct,
   createProductSuccess,
-  getAdminProducts,
+  deleteProductSuccess,
   getAdminProductsSuccess,
+  updateProductSuccess,
 } from "./product.action";
 
 export interface ProductAdminState {
@@ -20,5 +20,17 @@ export const adminProductReducer: ActionReducer<ProductAdminState> =
     }),
     on(createProductSuccess, (state, { payload }) => {
       return { products: [...state.products, payload] };
+    }),
+    on(deleteProductSuccess, (state, { payload }) => {
+      return {
+        products: state.products.filter((product) => product.id !== payload),
+      };
+    }),
+    on(updateProductSuccess, (state, { payload }) => {
+      return {
+        products: state.products.map((product) =>
+          product.id === payload.id ? payload : product,
+        ),
+      };
     }),
   );
