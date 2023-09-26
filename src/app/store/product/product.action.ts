@@ -1,10 +1,20 @@
 import { createAction, props } from "@ngrx/store";
-import { Product, ProductAlter } from "../../shared/dto/product";
+import {
+  Product,
+  ProductAlter,
+  ProductCatalog,
+} from "../../shared/dto/product";
 
 export const getAdminProducts = createAction("[Products] Get Admin");
 export const getAdminProductsSuccess = createAction(
   "[Products] Get Admin Success",
   props<{ payload: Product[] }>(),
+);
+
+export const getProducts = createAction("[Products] Get");
+export const getProductsSuccess = createAction(
+  "[Products] Get Success",
+  props<{ payload: ProductCatalog[] }>(),
 );
 
 export const createProduct = createAction(

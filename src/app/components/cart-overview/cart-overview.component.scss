@@ -1,0 +1,20 @@
+.cart-overview {
+  display: grid;
+  gap: 1em;
+  padding: 4em 2em;
+  &--item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    gap: 1em;
+    app-product {
+      flex-basis: 70%;
+    }
+    &--price {
+      padding: 1em;
+      flex: 30%;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import { ActionReducer, createReducer, on } from "@ngrx/store";
-import { Product } from "../../shared/dto/product";
+import { Product } from "../../../shared/dto/product";
 import {
   createProductSuccess,
   deleteProductSuccess,
   getAdminProductsSuccess,
+  getProductsSuccess,
   updateProductSuccess,
-} from "./product.action";
+} from "../product.action";
 
 export interface ProductAdminState {
   products: Product[];

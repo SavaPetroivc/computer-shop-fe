@@ -1,12 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BASE_URL } from "../shared/consts";
-import {
-  MostPopular,
-  Product,
-  ProductAlter,
-  ProductCatalog,
-} from "../shared/dto/product";
+import { Product, ProductAlter, ProductCatalog } from "../shared/dto/product";
 import { Observable } from "rxjs";
 
 @Injectable({

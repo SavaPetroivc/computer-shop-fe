@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="products-wrapper">
+  <app-product
+    *ngFor="let product of products$ | async"
+    [product]="product"
+  ></app-product>
+</div>

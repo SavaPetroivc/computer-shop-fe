@@ -18,8 +18,14 @@ import { DashboardModule } from "./modules/dashboard/dashboard.module";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import { adminProductReducer } from "./store/product/product.reducer";
+import { adminProductReducer } from "./store/product/reducers/admin-product.reducer";
 import { ProductEffect } from "./store/product/product.effect";
+import { AllProductsComponent } from "./components/all-products/all-products.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatBadgeModule } from "@angular/material/badge";
+import { clientProductReducer } from "./store/product/reducers/product.reducer";
+import { CartOverviewComponent } from './components/cart-overview/cart-overview.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,8 @@ import { ProductEffect } from "./store/product/product.effect";
     ProductComponent,
     HomeComponent,
     NavbarComponent,
+    AllProductsComponent,
+    CartOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +49,17 @@ import { ProductEffect } from "./store/product/product.effect";
     MatInputModule,
     DashboardModule,
     MatSidenavModule,
-    StoreModule.forRoot({ adminProducts: adminProductReducer }, {}),
+    StoreModule.forRoot(
+      {
+        adminProducts: adminProductReducer,
+        clientProducts: clientProductReducer,
+      },
+      {},
+    ),
     EffectsModule.forRoot([ProductEffect]),
+    MatButtonModule,
+    MatIconModule,
+    MatBadgeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

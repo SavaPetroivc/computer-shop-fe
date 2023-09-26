@@ -21,6 +21,21 @@ export class ProductEffect {
     ),
   );
 
+  getProducts$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(ProductActions.getProducts),
+      switchMap(() =>
+        this.productService
+          .getProducts()
+          .pipe(
+            map((response) =>
+              ProductActions.getProductsSuccess({ payload: response }),
+            ),
+          ),
+      ),
+    ),
+  );
+
   createProduct$ = createEffect(() =>
     this.actions.pipe(
       ofType(ProductActions.createProduct),

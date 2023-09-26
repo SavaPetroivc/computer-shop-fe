@@ -5,8 +5,7 @@ export type Product = {
   id: string;
 };
 
-export type ProductCatalog = Omit<Product, "quantity" | "id">;
+export type ProductCatalog = Omit<Product, "quantity">;
 
 export type ProductAlter = Omit<Product, "id">;
-
-export type MostPopular = Pick<Product, "name"|"price">
+export type ProductCreateOrder = Pick<Product, "id" | "quantity">;

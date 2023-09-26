@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { MostPopular } from "../shared/dto/product";
+import {  ProductCatalog } from "../shared/dto/product";
 import { BASE_URL } from "../shared/consts";
 import { HttpClient } from "@angular/common/http";
 
@@ -10,7 +10,7 @@ import { HttpClient } from "@angular/common/http";
 export class OrderService {
   constructor(private http: HttpClient) {}
 
-  getMostPopular(): Observable<MostPopular[]> {
-    return this.http.get<MostPopular[]>(`${BASE_URL}/orders/most-popular`);
+  getMostPopular(): Observable<ProductCatalog[]> {
+    return this.http.get<ProductCatalog[]>(`${BASE_URL}/orders/most-popular`);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { ProductCatalog } from "src/app/shared/dto/product";
+import { CartService } from "../../services/cart.service";
 
 @Component({
   selector: "app-product",
@@ -7,5 +8,8 @@ import { ProductCatalog } from "src/app/shared/dto/product";
   styleUrls: ["./product.component.scss"],
 })
 export class ProductComponent {
-  @Input({ required: true }) product!: ProductCatalog;
+  @Input({ required: true }) product!: ProductCatalog
+
+  constructor(public cartService:CartService) {
+  }
 }

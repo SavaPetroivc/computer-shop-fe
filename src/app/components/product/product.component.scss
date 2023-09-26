@@ -5,4 +5,10 @@
   flex-direction: column;
   gap: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  &--action{
+    display: flex;
+    justify-content: end;
+    gap: .25em;
+    width: 100%;
+  }
 }

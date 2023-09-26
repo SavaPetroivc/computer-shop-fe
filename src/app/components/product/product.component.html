@@ -1,4 +1,21 @@
 <div class="product">
   <p>Name: {{ product.name }}</p>
   <p>Price: {{ product.price }}</p>
+  <div class="product--action">
+    <button
+      (click)="cartService.addToCart(product)"
+      mat-icon-button
+      color="warn"
+      aria-label="Example icon button with a heart icon"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="warn"
+      aria-label="Example icon button with a heart icon"
+    >
+      <mat-icon>visibility</mat-icon>
+    </button>
+  </div>
 </div>

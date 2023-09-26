@@ -27,7 +27,6 @@ export class LoginComponent {
         this.currentUserService.addCurrentUser(response);
       },
       (error) => {
-        console.log(error);
       },
     );
   }
