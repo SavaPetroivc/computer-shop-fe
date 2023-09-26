@@ -23,10 +23,8 @@ export class ProductsService {
     return this.http.get<Product[]>(`${BASE_URL}/products/administrators`);
   }
 
-  insertProduct(product: ProductAlter) {
-    return this.http.post(`${BASE_URL}/products`, product, {
-      responseType: "text",
-    });
+  insertProduct(product: ProductAlter): Observable<Product> {
+    return this.http.post<Product>(`${BASE_URL}/products`, product);
   }
 
   changeProduct(product: Product) {

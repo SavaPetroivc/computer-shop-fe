@@ -16,6 +16,10 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { DashboardModule } from "./modules/dashboard/dashboard.module";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { adminProductReducer } from "./store/product/product.reducer";
+import { ProductEffect } from "./store/product/product.effect";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MatSidenavModule } from "@angular/material/sidenav";
     ReactiveFormsModule,
     MatInputModule,
     DashboardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    StoreModule.forRoot({ adminProducts: adminProductReducer }, {}),
+    EffectsModule.forRoot([ProductEffect]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
