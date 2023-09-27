@@ -32,7 +32,6 @@ export class ProductsOverviewTableComponent implements OnInit {
   constructor(
     private store: Store<StateModel>,
     private currentUserService: CurrentUserService,
-    private matDialog: MatDialog,
   ) {}
 
   ngOnInit(): void {

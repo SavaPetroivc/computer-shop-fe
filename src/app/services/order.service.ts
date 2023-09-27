@@ -4,6 +4,7 @@ import { ProductCatalog } from "../shared/dto/product";
 import { BASE_URL } from "../shared/consts";
 import { HttpClient } from "@angular/common/http";
 import { OrderCreate } from "../shared/dto/order/order-create.model";
+import { OrderGet } from "../shared/dto/order/order-get.model";
 
 @Injectable({
   providedIn: "root",
@@ -19,5 +20,9 @@ export class OrderService {
     return this.http.post(`${BASE_URL}/orders`, orderCreate, {
       responseType: "text",
     });
+  }
+
+  getOrders(): Observable<OrderGet[]> {
+    return this.http.get<OrderGet[]>(`${BASE_URL}/orders`);
   }
 }

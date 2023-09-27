@@ -31,6 +31,8 @@ import { OrderDeliveryComponent } from "./components/order-delivery/order-delive
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { orderAdminReducer } from "./store/order/order-admin.reducer";
+import { OrderEffect } from "./store/order/order.effect";
 
 @NgModule({
   declarations: [
@@ -60,10 +62,11 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
       {
         adminProducts: adminProductReducer,
         clientProducts: clientProductReducer,
+        adminOrders: orderAdminReducer,
       },
       {},
     ),
-    EffectsModule.forRoot([ProductEffect]),
+    EffectsModule.forRoot([ProductEffect, OrderEffect]),
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,

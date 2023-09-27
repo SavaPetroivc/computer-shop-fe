@@ -16,6 +16,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
+import { OrderOverviewComponent } from './components/order-overview/order-overview.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatIconModule } from "@angular/material/icon";
     ProductsOverviewComponent,
     ProductsOverviewTableComponent,
     ProductCreateFormComponent,
+    OrderOverviewComponent,
   ],
   exports: [NavigateLinkComponent],
   imports: [

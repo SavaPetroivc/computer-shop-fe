@@ -6,3 +6,7 @@ export interface OrderDelivery {
   street: string;
   number: string;
 }
+
+export interface OrderDeliveryGet extends Omit<OrderDelivery, "city"> {
+  city: string;
+}
