@@ -1,0 +1,23 @@
+<div class="order-form" [formGroup]="orderDeliveryForm">
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <mat-select formControlName="city">
+      <mat-option *ngFor="let city of cities$ | async" [value]="city">
+        {{ city.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Zip</mat-label>
+    <input matInput placeholder="Name" formControlName="zip" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Street</mat-label>
+    <input matInput placeholder="Street" formControlName="street" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Number</mat-label>
+    <input matInput placeholder="Number" formControlName="number" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="sendOrder()">Save</button>
+</div>

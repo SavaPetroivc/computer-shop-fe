@@ -3,5 +3,5 @@ import { OrderDelivery } from "./order-delivery.model";
 
 export interface OrderCreate{
   orderProducts:OrderProduct[]
-  orderDelivery:OrderDelivery
+  orderDeliveryInfo:OrderDelivery
 }

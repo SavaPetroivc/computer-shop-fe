@@ -26,6 +26,10 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatBadgeModule } from "@angular/material/badge";
 import { clientProductReducer } from "./store/product/reducers/product.reducer";
 import { CartOverviewComponent } from './components/cart-overview/cart-overview.component';
+import { CartWrapperComponent } from './components/cart-wrapper/cart-wrapper.component';
+import { OrderDeliveryComponent } from './components/order-delivery/order-delivery.component';
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -38,6 +42,8 @@ import { CartOverviewComponent } from './components/cart-overview/cart-overview.
     NavbarComponent,
     AllProductsComponent,
     CartOverviewComponent,
+    CartWrapperComponent,
+    OrderDeliveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,14 +58,16 @@ import { CartOverviewComponent } from './components/cart-overview/cart-overview.
     StoreModule.forRoot(
       {
         adminProducts: adminProductReducer,
-        clientProducts: clientProductReducer,
+        clientProducts: clientProductReducer
       },
-      {},
+      {}
     ),
     EffectsModule.forRoot([ProductEffect]),
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
+    MatStepperModule,
+    MatSelectModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

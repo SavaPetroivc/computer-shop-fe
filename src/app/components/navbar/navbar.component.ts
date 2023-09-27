@@ -4,6 +4,7 @@ import { map } from "rxjs";
 import { CartService } from "../../services/cart.service";
 import { MatDialog } from "@angular/material/dialog";
 import { CartOverviewComponent } from "../cart-overview/cart-overview.component";
+import { CartWrapperComponent } from "../cart-wrapper/cart-wrapper.component";
 
 @Component({
   selector: "app-navbar",
@@ -23,7 +24,7 @@ export class NavbarComponent {
   ) {}
 
   openCart(){
-    this.matDialog.open(CartOverviewComponent, {
+    this.matDialog.open(CartWrapperComponent, {
       position: { right: "0" },
       height: "100vh",
       width: "25%",

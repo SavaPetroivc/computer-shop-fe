@@ -1,0 +1,9 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step>
+    <app-cart-overview></app-cart-overview>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <app-order-delivery></app-order-delivery>
+  </mat-step>
+</mat-stepper>

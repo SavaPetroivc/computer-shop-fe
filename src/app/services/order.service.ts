@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import {  ProductCatalog } from "../shared/dto/product";
+import { ProductCatalog } from "../shared/dto/product";
 import { BASE_URL } from "../shared/consts";
 import { HttpClient } from "@angular/common/http";
+import { OrderCreate } from "../shared/dto/order/order-create.model";
 
 @Injectable({
   providedIn: "root",
@@ -12,5 +13,9 @@ export class OrderService {
 
   getMostPopular(): Observable<ProductCatalog[]> {
     return this.http.get<ProductCatalog[]>(`${BASE_URL}/orders/most-popular`);
+  }
+
+  makeOrder(orderCreate: OrderCreate): Observable<any> {
+    return this.http.post(`${BASE_URL}/orders`, orderCreate);
   }
 }

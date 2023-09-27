@@ -27,8 +27,6 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getProducts());
-    this.cartService.getCart$().subscribe((r) => {
-      console.log(r);
-    });
+
   }
 }

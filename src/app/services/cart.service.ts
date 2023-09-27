@@ -37,6 +37,10 @@ export class CartService {
     return this.currentCart$.asObservable();
   }
 
+  getCart(): OrderProduct[] {
+    return this.currentCart$.value;
+  }
+
   getTotalQuantity(): Observable<number> {
     return this.currentCart$.asObservable().pipe(
       map((currentCart) =>
@@ -46,5 +50,8 @@ export class CartService {
         }, 0),
       ),
     );
+  }
+  reset() {
+    this.currentCart$.next([]);
   }
 }
