@@ -27,7 +27,7 @@ export class NavbarComponent {
     this.matDialog.open(CartWrapperComponent, {
       position: { right: "0" },
       height: "100vh",
-      width: "25%",
+      width: "50%",
     });
   }
 }

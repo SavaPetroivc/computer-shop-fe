@@ -5,6 +5,7 @@ import { CityService } from "../../services/city.service";
 import { Observable } from "rxjs";
 import { OrderService } from "../../services/order.service";
 import { OrderDelivery } from "../../shared/dto/order/order-delivery.model";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-order-delivery",
@@ -35,14 +36,21 @@ export class OrderDeliveryComponent {
     private cartService: CartService,
     private cityService: CityService,
     private orderService: OrderService,
+    private snackBar: MatSnackBar,
   ) {}
 
   sendOrder() {
     this.orderService
       .makeOrder({
-        orderDeliveryInfo: this.orderDeliveryForm.getRawValue() as OrderDelivery,
+        orderDeliveryInfo:
+          this.orderDeliveryForm.getRawValue() as OrderDelivery,
         orderProducts: this.cartService.getCart(),
       })
-      .subscribe(() => {});
+      .subscribe(() => {
+        this.cartService.reset();
+        this.snackBar.open("Order successfully created", "Done", {
+          duration: 3000,
+        });
+      });
   }
 }

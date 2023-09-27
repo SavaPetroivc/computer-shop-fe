@@ -16,6 +16,8 @@ export class OrderService {
   }
 
   makeOrder(orderCreate: OrderCreate): Observable<any> {
-    return this.http.post(`${BASE_URL}/orders`, orderCreate);
+    return this.http.post(`${BASE_URL}/orders`, orderCreate, {
+      responseType: "text",
+    });
   }
 }
