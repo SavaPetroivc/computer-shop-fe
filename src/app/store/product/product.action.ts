@@ -37,10 +37,10 @@ export const updateProductSuccess = createAction(
 
 export const deleteProduct = createAction(
   "[Products] Delete Product",
-  props<{ payload: string }>(),
+  props<{ payload: number }>(),
 );
 
 export const deleteProductSuccess = createAction(
   "[Products] Delete Product Success",
-  props<{ payload: string }>(),
+  props<{ payload: number }>(),
 );

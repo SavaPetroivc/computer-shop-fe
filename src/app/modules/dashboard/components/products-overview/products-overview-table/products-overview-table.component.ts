@@ -19,7 +19,7 @@ import { ProductCreateFormComponent } from "../product-create-form/product-creat
   styleUrls: ["./products-overview-table.component.scss"],
 })
 export class ProductsOverviewTableComponent implements OnInit {
-  @Output() onProductEdit = new EventEmitter<Product>()
+  @Output() onProductEdit = new EventEmitter<Product>();
   products$: Observable<Product[]> = this.store.select(
     (state) => state.adminProducts.products,
   );
@@ -32,15 +32,14 @@ export class ProductsOverviewTableComponent implements OnInit {
   constructor(
     private store: Store<StateModel>,
     private currentUserService: CurrentUserService,
-    private matDialog:MatDialog
+    private matDialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.store.dispatch(getAdminProducts());
   }
 
-  delete(id: string) {
+  delete(id: number) {
     this.store.dispatch(deleteProduct({ payload: id }));
   }
-
 }

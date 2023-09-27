@@ -2,7 +2,7 @@ export type Product = {
   name: string;
   price: number;
   quantity: number;
-  id: string;
+  id: number;
 };
 
 export type ProductCatalog = Omit<Product, "quantity">;

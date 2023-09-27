@@ -12,10 +12,12 @@
     </button>
     <button
       mat-icon-button
+      [disabled]="!(doesCartContainsProduct$ | async)"
       color="warn"
+      (click)="cartService.decrease(product)"
       aria-label="Example icon button with a heart icon"
     >
-      <mat-icon>visibility</mat-icon>
+      <mat-icon>remove</mat-icon>
     </button>
   </div>
 </div>

@@ -30,7 +30,7 @@ export class ProductsService {
     return this.http.get<Product[]>(`${BASE_URL}/products`);
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
     return this.http.delete(`${BASE_URL}/products/${id}`, {
       responseType: "text",
     });
