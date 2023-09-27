@@ -21,9 +21,6 @@ const routes: Routes = [
       },
       {
         path: "orders",
-        canActivate: [
-          protectedGuard(["ADMINISTRATOR", "WAREHOUSE_ADMINISTRATOR"]),
-        ],
         component: OrderOverviewComponent,
       },
     ],

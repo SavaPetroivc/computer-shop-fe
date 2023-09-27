@@ -32,6 +32,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { orderAdminReducer } from "./store/order/order-admin.reducer";
 import { OrderEffect } from "./store/order/order.effect";
+import { ProductComponent } from "./components/product/product.component";
 
 @NgModule({
   declarations: [
@@ -60,9 +61,9 @@ import { OrderEffect } from "./store/order/order.effect";
       {
         adminProducts: adminProductReducer,
         clientProducts: clientProductReducer,
-        adminOrders: orderAdminReducer,
+        adminOrders: orderAdminReducer
       },
-      {},
+      {}
     ),
     EffectsModule.forRoot([ProductEffect, OrderEffect]),
     MatButtonModule,
@@ -71,6 +72,7 @@ import { OrderEffect } from "./store/order/order.effect";
     MatStepperModule,
     MatSelectModule,
     MatSnackBarModule,
+    ProductComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

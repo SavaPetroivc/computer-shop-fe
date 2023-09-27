@@ -21,6 +21,20 @@ export class OrderEffect {
     ),
   );
 
+  getMyOrders$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(OrderActions.getMyOrders),
+      switchMap(() =>
+        this.orderService
+          .getMyOrders()
+          .pipe(
+            map((response) =>
+              OrderActions.getMyOrdersSuccess({ payload: response }),
+            ),
+          ),
+      ),
+    ),
+  );
   constructor(
     private orderService: OrderService,
     private actions: Actions,
