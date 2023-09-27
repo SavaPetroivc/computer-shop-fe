@@ -1,0 +1,27 @@
+<div class="order-overview">
+  <h1>{{ orderInfo.date }}</h1>
+  <h1>User</h1>
+  <h3>{{ orderInfo.user.firstName + " " + orderInfo.user.lastName }}</h3>
+  <h3>{{ orderInfo.user.userContactInfo.contactPhone }}</h3>
+  <h3>{{ orderInfo.user.userContactInfo.email }}</h3>
+  <h1>Delivery</h1>
+  <h3>
+    {{ orderInfo.orderDeliveryInfo.city }},
+    {{ orderInfo.orderDeliveryInfo.zip }}
+  </h3>
+  <h3>
+    {{ orderInfo.orderDeliveryInfo.street }}
+    {{ orderInfo.orderDeliveryInfo.city }}
+  </h3>
+
+  <div class="order-overview--products">
+    <div
+      *ngFor="let product of orderInfo.orderProducts"
+      class="order-overview--products--product"
+    >
+      <h3>Name: {{ product.name }}</h3>
+      <p>Price:{{ product.price }}</p>
+      <p>Quantity: {{ product.orderQuantity }}</p>
+    </div>
+  </div>
+</div>

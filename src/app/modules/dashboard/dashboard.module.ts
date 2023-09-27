@@ -17,6 +17,7 @@ import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { OrderOverviewComponent } from './components/order-overview/order-overview.component';
+import { OrderOverviewDialogComponent } from './components/order-overview/order-overview-dialog/order-overview-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { OrderOverviewComponent } from './components/order-overview/order-overvi
     ProductsOverviewTableComponent,
     ProductCreateFormComponent,
     OrderOverviewComponent,
+    OrderOverviewDialogComponent,
   ],
   exports: [NavigateLinkComponent],
   imports: [

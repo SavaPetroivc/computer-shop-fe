@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { SignupComponent } from "./components/signup/signup.component";
 import { DashboardComponent } from "./modules/dashboard/components/dashboard/dashboard.component";
-import { ProductComponent } from "./components/product/product.component";
 import { HomeComponent } from "./components/home/home.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
@@ -40,7 +39,6 @@ import { OrderEffect } from "./store/order/order.effect";
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    ProductComponent,
     HomeComponent,
     NavbarComponent,
     AllProductsComponent,
