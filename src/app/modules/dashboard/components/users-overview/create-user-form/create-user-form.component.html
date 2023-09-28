@@ -1,0 +1,33 @@
+<div class="user-form" [formGroup]="userForm">
+  <mat-form-field class="basic-input">
+    <mat-label>First name</mat-label>
+    <input matInput placeholder="Name" formControlName="firstName" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Last name</mat-label>
+    <input matInput placeholder="Name" formControlName="lastName" />
+  </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      <mat-option *ngFor="let role of roles$ | async" [value]="role">
+        {{ role.role }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div formGroupName="userContactInfo">
+    <mat-form-field class="basic-input">
+      <mat-label>First name</mat-label>
+      <input matInput placeholder="Name" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field class="basic-input">
+      <mat-label>Last name</mat-label>
+      <input matInput placeholder="Name" formControlName="contactPhone" />
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</div>

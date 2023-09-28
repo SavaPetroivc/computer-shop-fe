@@ -8,7 +8,7 @@ export interface OrderAdminState {
 const initialState: OrderAdminState = { orders: [] };
 export const orderAdminReducer: ActionReducer<OrderAdminState> = createReducer(
   initialState,
-  on(getOrdersSuccess, (state, { payload }) => {
+  on(getOrdersSuccess  , (state, { payload }) => {
     return { orders: payload };
   }),
   on(getMyOrdersSuccess, (state, { payload }) => {

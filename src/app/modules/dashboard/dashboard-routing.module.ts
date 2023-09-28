@@ -5,6 +5,9 @@ import { ProductsOverviewComponent } from "./components/products-overview/produc
 import { authGuard } from "./guards/auth.guard";
 import { protectedGuard } from "./guards/protected.guard";
 import { OrderOverviewComponent } from "./components/order-overview/order-overview.component";
+import { RoleEnum } from "../../shared/enum/role.enum";
+import { UsersOverviewComponent } from "./components/users-overview/users-overview.component";
+import { ActivateComponent } from "./components/activate/activate.component";
 
 const routes: Routes = [
   {
@@ -12,16 +15,32 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard],
     children: [
+      { path: "activate", component: ActivateComponent },
       {
         path: "products",
         canActivate: [
-          protectedGuard(["ADMINISTRATOR", "WAREHOUSE_ADMINISTRATOR"]),
+          protectedGuard([
+            RoleEnum.ADMINISTRATOR,
+            RoleEnum.WAREHOUSE_ADMINISTRATOR,
+          ]),
         ],
         component: ProductsOverviewComponent,
       },
       {
         path: "orders",
         component: OrderOverviewComponent,
+        canActivate: [
+          protectedGuard([
+            RoleEnum.ADMINISTRATOR,
+            RoleEnum.WAREHOUSE_ADMINISTRATOR,
+            RoleEnum.USER,
+          ]),
+        ],
+      },
+      {
+        path: "users",
+        canActivate: [protectedGuard([RoleEnum.ADMINISTRATOR])],
+        component: UsersOverviewComponent,
       },
     ],
   },

@@ -46,6 +46,9 @@ export class OrderOverviewComponent implements OnInit {
   }
 
   isCurrentUserAdministrator() {
-    return this.currentUser.getCurrentUser()?.role === "ADMINISTRATOR";
+    return (
+      this.currentUser.getCurrentUser()?.role === "ADMINISTRATOR" ||
+      this.currentUser.getCurrentUser()?.role === "WAREHOUSE_ADMINISTRATOR"
+    );
   }
 }

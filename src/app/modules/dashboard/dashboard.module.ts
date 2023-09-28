@@ -18,6 +18,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { OrderOverviewComponent } from './components/order-overview/order-overview.component';
 import { OrderOverviewDialogComponent } from './components/order-overview/order-overview-dialog/order-overview-dialog.component';
+import { UsersOverviewComponent } from './components/users-overview/users-overview.component';
+import { UserTableComponent } from './components/users-overview/user-table/user-table.component';
+import { CreateUserFormComponent } from './components/users-overview/create-user-form/create-user-form.component';
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
+import { ActivateComponent } from './components/activate/activate.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,10 @@ import { OrderOverviewDialogComponent } from './components/order-overview/order-
     ProductCreateFormComponent,
     OrderOverviewComponent,
     OrderOverviewDialogComponent,
+    UsersOverviewComponent,
+    UserTableComponent,
+    CreateUserFormComponent,
+    ActivateComponent,
   ],
   exports: [NavigateLinkComponent],
   imports: [
@@ -38,7 +48,9 @@ import { OrderOverviewDialogComponent } from './components/order-overview/order-
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     {

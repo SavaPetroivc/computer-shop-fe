@@ -1,17 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { ProductsService } from "../../../../../services/products.service";
-import { map, Observable, tap } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Product } from "../../../../../shared/dto/product";
 import { Store } from "@ngrx/store";
 import {
   deleteProduct,
   getAdminProducts,
 } from "../../../../../store/product/product.action";
-import { state } from "@angular/animations";
 import { StateModel } from "../../../../../store/model/state.model";
 import { CurrentUserService } from "../../../../../services/current-user.service";
-import { MatDialog } from "@angular/material/dialog";
-import { ProductCreateFormComponent } from "../product-create-form/product-create-form.component";
 
 @Component({
   selector: "app-products-overview-table",

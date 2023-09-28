@@ -33,6 +33,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { orderAdminReducer } from "./store/order/order-admin.reducer";
 import { OrderEffect } from "./store/order/order.effect";
 import { ProductComponent } from "./components/product/product.component";
+import { userReducer } from "./store/user/user.reducer";
+import { UserEffect } from "./store/user/user.effect";
 
 @NgModule({
   declarations: [
@@ -61,18 +63,19 @@ import { ProductComponent } from "./components/product/product.component";
       {
         adminProducts: adminProductReducer,
         clientProducts: clientProductReducer,
-        adminOrders: orderAdminReducer
+        adminOrders: orderAdminReducer,
+        users: userReducer,
       },
-      {}
+      {},
     ),
-    EffectsModule.forRoot([ProductEffect, OrderEffect]),
+    EffectsModule.forRoot([ProductEffect, OrderEffect, UserEffect]),
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
     MatStepperModule,
     MatSelectModule,
     MatSnackBarModule,
-    ProductComponent
+    ProductComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

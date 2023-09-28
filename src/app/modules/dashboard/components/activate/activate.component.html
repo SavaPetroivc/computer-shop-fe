@@ -1,0 +1,9 @@
+<div style="display: block">
+  <mat-form-field class="basic-input">
+    <mat-label>New Password</mat-label>
+    <input matInput placeholder="MyNewPassword" [formControl]="password" />
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" (click)="changePassword()">Update</button>
+  </div>
+</div>
