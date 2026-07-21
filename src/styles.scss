@@ -8,3 +8,51 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: #3f51b5;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mat-snack-bar-button-color: #ffffff;
+
+  .mdc-snackbar__surface {
+    background-color: #3f51b5 !important;
+  }
+
+  .mdc-snackbar__label,
+  .mat-mdc-snack-bar-label {
+    color: #ffffff !important;
+  }
+
+  .mat-mdc-snack-bar-action,
+  .mat-mdc-button {
+    color: #ffffff !important;
+  }
+}
+
+.mat-step-header:hover,
+.mat-step-header:focus,
+.mat-step-header.cdk-focused,
+.mat-step-header.cdk-mouse-focused,
+.mat-step-header.cdk-keyboard-focused,
+.mat-step-header.cdk-program-focused {
+  background-color: transparent !important;
+}
+
+.mat-horizontal-stepper-header-container {
+  align-items: center;
+  padding-left: 24px;
+}
+
+.mat-horizontal-stepper-header {
+  padding: 16px !important;
+}
+
+.mat-step-label-empty {
+  display: none !important;
+}
+
+.mat-stepper-horizontal-line {
+  flex: 1 1 0 !important;
+  min-width: 24px;
+  margin: 0 !important;
+}

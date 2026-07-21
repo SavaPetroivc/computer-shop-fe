@@ -4,7 +4,7 @@
     class="cart-overview--item"
     *ngFor="let orderProduct of currentCart$ | async"
   >
-    <app-product [product]="orderProduct.product"></app-product>
+    <app-product [product]="orderProduct.product" [inCart]="true"></app-product>
     <div class="cart-overview--item--price">
       <h4>Total: {{ orderProduct.product.price * orderProduct.quantity }}</h4>
       <h4>Quantity: {{ orderProduct.quantity }}</h4>

@@ -4,6 +4,7 @@ import { CartService } from "../../services/cart.service";
 import { of } from "rxjs";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -15,13 +16,24 @@ import { CommonModule } from "@angular/common";
 })
 export class ProductComponent implements OnInit {
   @Input({ required: true }) product!: ProductCatalog;
+  @Input() inCart = false;
   doesCartContainsProduct$ = of(false);
 
-  constructor(public cartService: CartService) {}
+  constructor(
+    public cartService: CartService,
+    private snackBar: MatSnackBar,
+  ) {}
 
   ngOnInit(): void {
     this.doesCartContainsProduct$ = this.cartService.doesCartContainsProduct$(
       this.product.id,
     );
+  }
+
+  addToCart(): void {
+    this.cartService.addToCart(this.product);
+    this.snackBar.open(`${this.product.name} added to cart`, "OK", {
+      duration: 2000,
+    });
   }
 }

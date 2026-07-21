@@ -28,6 +28,9 @@ export class ProductCreateFormComponent {
       validators: [Validators.required],
       nonNullable: true,
     }),
+    imageUrl: new FormControl(this.product ? this.product.imageUrl ?? "" : "", {
+      nonNullable: true,
+    }),
   });
 
   constructor(

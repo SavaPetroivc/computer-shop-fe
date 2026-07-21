@@ -1,20 +1,21 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { CartService } from "../../services/cart.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CityService } from "../../services/city.service";
-import { Observable } from "rxjs";
+import { filter, Observable, take } from "rxjs";
 import { OrderService } from "../../services/order.service";
-import { OrderDelivery } from "../../shared/dto/order/order-delivery.model";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { CurrentUserService } from "../../services/current-user.service";
+
+type City = { id: number; name: string };
 
 @Component({
   selector: "app-order-delivery",
   templateUrl: "./order-delivery.component.html",
   styleUrls: ["./order-delivery.component.scss"],
 })
-export class OrderDeliveryComponent {
-  cities$: Observable<{ id: number; name: string }[]> =
-    this.cityService.getCities();
+export class OrderDeliveryComponent implements OnInit {
+  cities$: Observable<City[]> = this.cityService.getCities();
   orderDeliveryForm = new FormGroup({
     zip: new FormControl("", {
       validators: [Validators.required],
@@ -28,7 +29,7 @@ export class OrderDeliveryComponent {
       validators: [Validators.required],
       nonNullable: true,
     }),
-    city: new FormControl<{ id: number; name: string } | null>(null, {
+    city: new FormControl<City | null>(null, {
       validators: [Validators.required],
     }),
   });
@@ -37,9 +38,35 @@ export class OrderDeliveryComponent {
     private cityService: CityService,
     private orderService: OrderService,
     private snackBar: MatSnackBar,
+    private currentUserService: CurrentUserService,
   ) {}
 
+  ngOnInit(): void {
+    this.currentUserService
+      .getCurrentUser$()
+      .pipe(filter(Boolean), take(1))
+      .subscribe((user) => {
+        const contact = user.userContactInfo;
+        if (!contact) {
+          return;
+        }
+        this.orderDeliveryForm.patchValue({
+          street: contact.street ?? "",
+          number: contact.number ?? "",
+          zip: contact.zip ?? "",
+          city: contact.city ?? null,
+        });
+      });
+  }
+
+  compareCities = (a: City | null, b: City | null): boolean =>
+    a?.id === b?.id;
+
   sendOrder() {
+    if (!this.cartService.getCart().length) {
+      this.snackBar.open("Your cart is empty.", "Close", { duration: 3000 });
+      return;
+    }
     if (this.orderDeliveryForm.invalid) {
       this.orderDeliveryForm.markAllAsTouched();
       return;

@@ -28,6 +28,7 @@ import { clientProductReducer } from "./store/product/reducers/product.reducer";
 import { CartOverviewComponent } from "./components/cart-overview/cart-overview.component";
 import { CartWrapperComponent } from "./components/cart-wrapper/cart-wrapper.component";
 import { OrderDeliveryComponent } from "./components/order-delivery/order-delivery.component";
+import { CheckoutLoginComponent } from "./components/checkout-login/checkout-login.component";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
@@ -52,6 +53,7 @@ import { CurrentUserService } from "./services/current-user.service";
     CartOverviewComponent,
     CartWrapperComponent,
     OrderDeliveryComponent,
+    CheckoutLoginComponent,
   ],
   imports: [
     BrowserModule,

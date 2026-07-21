@@ -3,6 +3,7 @@ export type Product = {
   price: number;
   quantity: number;
   id: number;
+  imageUrl?: string;
 };
 
 export type ProductCatalog = Omit<Product, "quantity">;

@@ -16,5 +16,19 @@
       formControlName="quantity"
     />
   </mat-form-field>
+  <mat-form-field class="basic-input">
+    <mat-label>Image URL</mat-label>
+    <input
+      matInput
+      placeholder="https://example.com/image.jpg"
+      formControlName="imageUrl"
+    />
+  </mat-form-field>
+  <img
+    *ngIf="productForm.value.imageUrl"
+    [src]="productForm.value.imageUrl"
+    alt="Preview"
+    class="image-preview"
+  />
   <button mat-raised-button color="primary" (click)="createOrUpdate()">Save</button>
 </div>

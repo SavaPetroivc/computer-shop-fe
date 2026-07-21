@@ -43,7 +43,14 @@ export class UserService {
   updateProfile(profile: {
     firstName: string;
     lastName: string;
-    userContactInfo: { email: string; contactPhone: string };
+    userContactInfo: {
+      email: string;
+      contactPhone: string;
+      street?: string;
+      number?: string;
+      zip?: string;
+      city?: { id: number } | null;
+    };
   }): Observable<string> {
     return this.http.put(`${BASE_URL}/users/me`, profile, {
       responseType: "text",

@@ -8,5 +8,9 @@ export interface UserInfo {
   userContactInfo: {
     email: string;
     contactPhone: string;
+    street?: string;
+    number?: string;
+    zip?: string;
+    city?: { id: number; name: string } | null;
   };
 }

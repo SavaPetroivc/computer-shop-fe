@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ProductsService } from "../../services/products.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, of, switchMap } from "rxjs";
+import { map, of, switchMap, tap } from "rxjs";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import * as ProductActions from "./product.action";
 
 @Injectable()
@@ -83,8 +84,35 @@ export class ProductEffect {
       ),
     ),
   );
+  notifyUpdate$ = createEffect(
+    () =>
+      this.actions.pipe(
+        ofType(ProductActions.updateProductSuccess),
+        tap(() =>
+          this.snackBar.open("Product updated successfully", "OK", {
+            duration: 3000,
+          }),
+        ),
+      ),
+    { dispatch: false },
+  );
+
+  notifyCreate$ = createEffect(
+    () =>
+      this.actions.pipe(
+        ofType(ProductActions.createProductSuccess),
+        tap(() =>
+          this.snackBar.open("Product created successfully", "OK", {
+            duration: 3000,
+          }),
+        ),
+      ),
+    { dispatch: false },
+  );
+
   constructor(
     private productService: ProductsService,
     private actions: Actions,
+    private snackBar: MatSnackBar,
   ) {}
 }

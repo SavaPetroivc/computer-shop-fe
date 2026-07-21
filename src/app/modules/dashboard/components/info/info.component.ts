@@ -1,8 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Observable } from "rxjs";
 import { UserService } from "../../../../services/user.service";
 import { CurrentUserService } from "../../../../services/current-user.service";
+import { CityService } from "../../../../services/city.service";
+
+type City = { id: number; name: string };
 
 @Component({
   selector: "app-info",
@@ -10,6 +14,7 @@ import { CurrentUserService } from "../../../../services/current-user.service";
   styleUrls: ["./info.component.scss"],
 })
 export class InfoComponent implements OnInit {
+  cities$: Observable<City[]> = this.cityService.getCities();
   profileForm = new FormGroup({
     firstName: new FormControl("", {
       validators: Validators.required,
@@ -27,6 +32,10 @@ export class InfoComponent implements OnInit {
       validators: Validators.required,
       nonNullable: true,
     }),
+    street: new FormControl("", { nonNullable: true }),
+    number: new FormControl("", { nonNullable: true }),
+    zip: new FormControl("", { nonNullable: true }),
+    city: new FormControl<City | null>(null),
     password: new FormControl("", {
       validators: Validators.minLength(6),
       nonNullable: true,
@@ -36,6 +45,7 @@ export class InfoComponent implements OnInit {
   constructor(
     private userService: UserService,
     private currentUserService: CurrentUserService,
+    private cityService: CityService,
     private snackBar: MatSnackBar,
   ) {}
 
@@ -46,25 +56,38 @@ export class InfoComponent implements OnInit {
         lastName: user.lastName,
         email: user.userContactInfo?.email,
         contactPhone: user.userContactInfo?.contactPhone,
+        street: user.userContactInfo?.street ?? "",
+        number: user.userContactInfo?.number ?? "",
+        zip: user.userContactInfo?.zip ?? "",
+        city: user.userContactInfo?.city ?? null,
       });
     });
   }
+
+  compareCities = (a: City | null, b: City | null): boolean =>
+    a?.id === b?.id;
 
   save(): void {
     if (this.profileForm.invalid) {
       return;
     }
-    const { firstName, lastName, email, contactPhone, password } =
-      this.profileForm.getRawValue();
+    const value = this.profileForm.getRawValue();
 
     this.userService
       .updateProfile({
-        firstName,
-        lastName,
-        userContactInfo: { email, contactPhone },
+        firstName: value.firstName,
+        lastName: value.lastName,
+        userContactInfo: {
+          email: value.email,
+          contactPhone: value.contactPhone,
+          street: value.street,
+          number: value.number,
+          zip: value.zip,
+          city: value.city ? { id: value.city.id } : null,
+        },
       })
       .subscribe({
-        next: () => this.onProfileSaved(firstName, lastName, email, contactPhone, password),
+        next: () => this.onProfileSaved(value),
         error: () =>
           this.snackBar.open("Failed to update profile.", "Close", {
             duration: 4000,
@@ -72,29 +95,30 @@ export class InfoComponent implements OnInit {
       });
   }
 
-  private onProfileSaved(
-    firstName: string,
-    lastName: string,
-    email: string,
-    contactPhone: string,
-    password: string,
-  ): void {
+  private onProfileSaved(value: ReturnType<typeof this.profileForm.getRawValue>): void {
     const current = this.currentUserService.getCurrentUser();
     if (current) {
       this.currentUserService.addCurrentUser({
         ...current,
-        firstName,
-        lastName,
-        userContactInfo: { email, contactPhone },
+        firstName: value.firstName,
+        lastName: value.lastName,
+        userContactInfo: {
+          email: value.email,
+          contactPhone: value.contactPhone,
+          street: value.street,
+          number: value.number,
+          zip: value.zip,
+          city: value.city,
+        },
       });
     }
 
-    if (!password) {
+    if (!value.password) {
       this.snackBar.open("Profile updated.", "Close", { duration: 3000 });
       return;
     }
 
-    this.userService.changePassword(password).subscribe({
+    this.userService.changePassword(value.password).subscribe({
       next: () => {
         this.profileForm.controls.password.reset("");
         this.snackBar.open("Profile and password updated.", "Close", {

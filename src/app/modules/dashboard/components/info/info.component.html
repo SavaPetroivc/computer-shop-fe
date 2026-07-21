@@ -27,6 +27,31 @@
     </mat-form-field>
 
     <mat-form-field class="basic-input" appearance="outline">
+      <mat-label>Street</mat-label>
+      <input matInput formControlName="street" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input" appearance="outline">
+      <mat-label>Number</mat-label>
+      <input matInput formControlName="number" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input" appearance="outline">
+      <mat-label>Zip</mat-label>
+      <input matInput formControlName="zip" />
+    </mat-form-field>
+
+    <mat-form-field class="basic-input" appearance="outline">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city" [compareWith]="compareCities">
+        <mat-option [value]="null">—</mat-option>
+        <mat-option *ngFor="let city of cities$ | async" [value]="city">
+          {{ city.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="basic-input" appearance="outline">
       <mat-label>New password</mat-label>
       <input matInput type="password" formControlName="password" />
       <mat-hint>Leave empty to keep your current password.</mat-hint>
