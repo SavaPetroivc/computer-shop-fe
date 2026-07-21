@@ -1,0 +1,105 @@
+.home {
+  .hero {
+    position: relative;
+    min-height: 58vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 56px 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        circle at 15% 20%,
+        rgba(255, 255, 255, 0.18),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 85%,
+        rgba(255, 255, 255, 0.12),
+        transparent 42%
+      ),
+      linear-gradient(135deg, #303f9f 0%, #3f51b5 45%, #7986cb 100%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='2' cy='2' r='2' fill='%23ffffff' fill-opacity='0.14'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    &__content {
+      position: relative;
+      max-width: 760px;
+      color: #fff;
+    }
+
+    &__title {
+      margin: 0;
+      font-size: clamp(34px, 5.5vw, 58px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &__subtitle {
+      margin: 18px auto 30px;
+      max-width: 560px;
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    &__cta {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 10px;
+      background: #fff;
+      color: #303f9f;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  .popular {
+    padding: 56px clamp(16px, 6vw, 96px);
+
+    &__title {
+      position: relative;
+      text-align: center;
+      margin: 0 0 40px;
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+
+      &::after {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 3px;
+        margin: 12px auto 0;
+        border-radius: 3px;
+        background: #3f51b5;
+      }
+    }
+
+    &__grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+}

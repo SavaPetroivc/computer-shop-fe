@@ -1,0 +1,71 @@
+<ng-container *ngIf="orders$ | async as orders">
+  <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.date | date: "short" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Product</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngFor="let product of element.orderProducts">
+          {{ product.name }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngFor="let product of element.orderProducts">
+          {{ product.orderQuantity }}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field
+          *ngIf="isCurrentUserAdministrator(); else statusText"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-select
+            [value]="element.status"
+            (selectionChange)="changeStatus(element, $event.value)"
+          >
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+              {{ statusLabel(status) }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <ng-template #statusText>{{ statusLabel(element.status) }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="warn"
+          aria-label="Example icon button with a heart icon"
+          (click)="view(element)"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</ng-container>

@@ -1,0 +1,21 @@
+<div class="home">
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">Welcome to ComputerShop</h1>
+      <p class="hero__subtitle">
+        Build your dream setup — top components, honest prices, delivered fast.
+      </p>
+      <a routerLink="/products" class="hero__cta">Shop products →</a>
+    </div>
+  </section>
+
+  <section class="popular">
+    <h2 class="popular__title">Most popular products</h2>
+    <div class="popular__grid">
+      <app-product
+        *ngFor="let product of mostPopular$ | async"
+        [product]="product"
+      ></app-product>
+    </div>
+  </section>
+</div>

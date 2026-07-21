@@ -1,0 +1,40 @@
+<div class="navbar">
+  <div class="navbar__links">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <p>Home</p>
+    </a>
+    <a routerLink="/products" routerLinkActive="active"><p>Products</p></a>
+    <a
+      *ngIf="authenticated$ | async"
+      routerLink="/dashboard/orders"
+      routerLinkActive="active"
+    >
+      <p>Profile</p>
+    </a>
+  </div>
+
+  <div class="navbar__actions">
+    <ng-container *ngIf="authenticated$ | async; else guestActions">
+      <a (click)="logout()" class="logout-link"><p>Logout</p></a>
+    </ng-container>
+    <ng-template #guestActions>
+      <a routerLink="/login" routerLinkActive="active"><p>Login</p></a>
+      <a routerLink="/signup" routerLinkActive="active"><p>Sign Up</p></a>
+    </ng-template>
+    <button
+      mat-mini-fab
+      (click)="openCart()"
+      [matBadge]="currentNumberOfProducts$ | async"
+      matBadgeColor="warn"
+      color="primary"
+      matBadgeOverlap="true"
+      aria-label="Open cart"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+</div>

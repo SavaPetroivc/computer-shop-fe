@@ -1,0 +1,73 @@
+<div class="signup-wrapper">
+  <div [formGroup]="signupForm" class="signup-form">
+    <mat-form-field class="basic-input">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Petar Petrovic"
+        value=""
+        formControlName="username"
+      />
+      <mat-error *ngIf="username?.hasError('required')"
+        >Username is required</mat-error
+      >
+      <mat-error *ngIf="username?.hasError('minlength')"
+        >Username must be at least 6 characters</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>First Name</mat-label>
+      <input matInput value="" formControlName="firstName" />
+      <mat-error *ngIf="firstName?.hasError('required')"
+        >First name is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Last Name</mat-label>
+      <input matInput value="" formControlName="lastName" />
+      <mat-error *ngIf="lastName?.hasError('required')"
+        >Last name is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Email</mat-label>
+      <input matInput value="" formControlName="email" />
+      <mat-error *ngIf="email?.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="email?.hasError('email')">Enter a valid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Contact Phone</mat-label>
+      <input matInput value="" formControlName="contactPhone" />
+      <mat-error *ngIf="contactPhone?.hasError('required')"
+        >Phone number is required</mat-error
+      >
+      <mat-error *ngIf="contactPhone?.hasError('pattern')"
+        >Enter a valid phone number (e.g. +381641234567)</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="basic-input">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" value="" formControlName="password" />
+      <mat-error *ngIf="password?.hasError('required')"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="password?.hasError('minlength')"
+        >Password must be at least 6 characters</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      mat-button
+      color="primary"
+      [disabled]="signupForm.invalid"
+      (click)="onBtnClick()"
+    >
+      Signup
+    </button>
+  </div>
+</div>

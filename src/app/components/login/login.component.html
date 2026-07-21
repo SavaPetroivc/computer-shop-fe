@@ -1,0 +1,41 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <div class="login-brand">
+      <mat-icon class="brand-icon">computer</mat-icon>
+      <h1 class="brand-title">Welcome back</h1>
+      <p class="brand-subtitle">Sign in to your account to continue</p>
+    </div>
+
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onBtnClick()">
+      <mat-form-field class="basic-input" appearance="outline">
+        <mat-label>Username</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          placeholder="Petar Petrovic"
+          formControlName="username"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="basic-input" appearance="outline">
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="login-button"
+        type="submit"
+      >
+        Login
+      </button>
+
+      <p class="signup-hint">
+        Don't have an account?
+        <a routerLink="/signup">Sign up</a>
+      </p>
+    </form>
+  </mat-card>
+</div>
