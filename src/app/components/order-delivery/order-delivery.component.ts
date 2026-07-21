@@ -5,6 +5,7 @@ import { CityService } from "../../services/city.service";
 import { filter, Observable, take } from "rxjs";
 import { OrderService } from "../../services/order.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatDialog } from "@angular/material/dialog";
 import { CurrentUserService } from "../../services/current-user.service";
 
 type City = { id: number; name: string };
@@ -39,7 +40,16 @@ export class OrderDeliveryComponent implements OnInit {
     private orderService: OrderService,
     private snackBar: MatSnackBar,
     private currentUserService: CurrentUserService,
+    private dialog: MatDialog,
   ) {}
+
+  cancelOrder(): void {
+    this.cartService.reset();
+    this.dialog.closeAll();
+    this.snackBar.open("Order cancelled, your cart is now empty.", "OK", {
+      duration: 3000,
+    });
+  }
 
   ngOnInit(): void {
     this.currentUserService

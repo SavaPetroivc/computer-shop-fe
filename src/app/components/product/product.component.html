@@ -35,9 +35,14 @@
       </button>
     </ng-container>
     <ng-template #addToCartBtn>
-      <button mat-raised-button color="primary" (click)="addToCart()">
-        <mat-icon>add_shopping_cart</mat-icon>
-        Add to cart
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="isOutOfStock"
+        (click)="addToCart()"
+      >
+        <mat-icon>{{ isOutOfStock ? "block" : "add_shopping_cart" }}</mat-icon>
+        {{ isOutOfStock ? "Out of stock" : "Add to cart" }}
       </button>
     </ng-template>
   </div>

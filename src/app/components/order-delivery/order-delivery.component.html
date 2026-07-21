@@ -19,5 +19,10 @@
     <mat-label>Number</mat-label>
     <input matInput placeholder="Number" formControlName="number" />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="sendOrder()">Save</button>
+  <div class="order-form__actions">
+    <button mat-raised-button color="primary" (click)="sendOrder()">Save</button>
+    <button mat-stroked-button color="warn" (click)="cancelOrder()">
+      Cancel order
+    </button>
+  </div>
 </div>

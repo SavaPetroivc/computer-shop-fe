@@ -1,4 +1,10 @@
 .order-form{
   display: grid;
   gap: 1em;
+
+  &__actions {
+    display: flex;
+    gap: 0.75em;
+    align-items: center;
+  }
 }

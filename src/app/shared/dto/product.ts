@@ -6,7 +6,7 @@ export type Product = {
   imageUrl?: string;
 };
 
-export type ProductCatalog = Omit<Product, "quantity">;
+export type ProductCatalog = Omit<Product, "quantity"> & { quantity?: number };
 
 export type ProductAlter = Omit<Product, "id">;
 export type ProductCreateOrder = Pick<Product, "id" | "quantity">;

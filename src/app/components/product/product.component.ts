@@ -30,7 +30,14 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  get isOutOfStock(): boolean {
+    return this.product.quantity !== undefined && this.product.quantity < 1;
+  }
+
   addToCart(): void {
+    if (this.isOutOfStock) {
+      return;
+    }
     this.cartService.addToCart(this.product);
     this.snackBar.open(`${this.product.name} added to cart`, "OK", {
       duration: 2000,
