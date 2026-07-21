@@ -5,7 +5,7 @@ import { OrderStatus } from "../../enum/order-status.enum";
 
 export interface OrderGet {
   id: number;
-  date: number;
+  date: string;
   total: number;
   status: OrderStatus;
   orderProducts: ProductsInOrder[];
